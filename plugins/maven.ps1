@@ -1,6 +1,6 @@
 if($Online) {
-$MavenDownloadUrl = Invoke-WebRequest -Uri "https://maven.apache.org/download.cgi" |
-  %{ $_.Links } | %{ $_.href } | ?{ $_ -Match "apache-maven-[\d.]+-bin.zip$" }
+  $MavenDownloadUrl = Invoke-WebRequest -Uri "https://maven.apache.org/download.cgi" |
+    %{ $_.Links } | %{ $_.href } | ?{ $_ -Match "apache-maven-[\d.]+-bin.zip$" }
 }
 InstallTool -Name "Maven" -Url $MavenDownloadUrl -Prefix apache-maven*
 
