@@ -15,28 +15,6 @@ if($Online) {
       Confirm-Folder $NodeInstallFolder
       Copy-Item $NodeDownloadFile "$NodeInstallFolder\$NodeFile"
     }
-
-    $LatestNpmInfo = DownloadString "http://registry.npmjs.org/npm/latest" | ConvertFrom-Json
-    $NpmDownloadUrl = $LatestNpmInfo.dist.tarball
-    $NpmFile = FileForUrl $NpmDownloadUrl
-    $NpmDownloadFile = "$DownloadsFolder\$NpmFile"
-
-    if(!(Test-Path $NpmDownloadFile)) {
-      Out-Info "Downloading npm..."
-      DownloadFile $NpmDownloadUrl $NpmDownloadFile
-    }
-
-    $NodeModulesFolder = "$NodeInstallFolder\node_modules"
-    if(!(Test-Path $NodeModulesFolder)) {
-      Confirm-Folder $NodeModulesFolder
-      Out-Info "Extracting npm..."
-      7z x -aoa "$NpmDownloadFile" -o"$NodeModulesFolder" | Out-Null
-      7z x -aoa "$NodeModulesFolder\*.tar" -o"$NodeModulesFolder" | Out-Null
-  
-      Rename-Item "$NodeModulesFolder\package" "npm"
-      Remove-Item -ErrorAction Ignore "$NodeModulesFolder\*.tar"
-      Copy-Item "$NodeModulesFolder\npm\bin\*" $NodeInstallFolder
-    }
   }
 }
 
