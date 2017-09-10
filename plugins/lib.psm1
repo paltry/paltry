@@ -68,9 +68,11 @@ Function AddToPath($BinFolder) {
   $Env:Path = "$BinFolder;$Env:Path"
 }
 
-Function InstallTool($Name, $Url, $Prefix) {
+Function InstallTool($Name, $Url, $Prefix, $ToolFile) {
   if($Online) {
-    $ToolFile = $Url.Split("/") | Select-Object -Last 1
+    if(!($ToolFile)) {
+      $ToolFile = $Url.Split("/") | Select-Object -Last 1
+    }
     $ToolFolder = [io.path]::GetFileNameWithoutExtension($ToolFile)
     if(!($ToolFile.Contains("."))) {
       $Url = [System.Net.WebRequest]::Create($Url).GetResponse().ResponseUri.AbsoluteUri
