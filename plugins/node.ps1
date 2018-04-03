@@ -12,6 +12,7 @@ if($Online) {
       DownloadFile $NodeDownloadUrl $NodeDownloadFile
     }
     if(!(Test-Path "$NodeInstallFolder\$NodeFile")) {
+      Out-Info "Copying Node..."
       Confirm-Folder $NodeInstallFolder
       Copy-Item $NodeDownloadFile "$NodeInstallFolder\$NodeFile"
     }
