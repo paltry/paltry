@@ -1,3 +1,6 @@
+Function Out-Title($Message) {
+  Write-Host -ForegroundColor "Blue" $Message
+}
 Function Out-Info($Message) {
   Write-Host -ForegroundColor "Green" $Message
 }

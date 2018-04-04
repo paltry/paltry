@@ -17,6 +17,7 @@ $TempFolder = "$UserProfile\Temp"
 $ToolsFolder = "$CurrentFolder\tools"
 $PluginsFolder = "$CurrentFolder\plugins"
 $LaunchFolder = "$CurrentFolder\launch"
+$Config = Get-Content 'config.json' | Out-String | ConvertFrom-Json
 $Online = Test-Connection -ComputerName 8.8.8.8 -Quiet -ErrorAction Ignore
 $Global:PathExtensions = @()
 Import-Module $PWD\plugins\lib.psm1
@@ -25,7 +26,12 @@ Out-Info "Setting Up..."
 SetupFolders
 
 Out-Info "Loading Plugins..."
-Get-ChildItem "$PluginsFolder\*.ps1" | %{ & $_ }
+Get-ChildItem "$PluginsFolder\*.ps1" | %{
+  Out-Title "[$($_.BaseName)]"
+  $Version = $Config.versions."$($_.BaseName)"
+  $UseLatestVersion = $Version -eq "LATEST"
+  & $_ -Version $Version -UseLatestVersion $UseLatestVersion
+}
 
 Out-Console
 explorer $LaunchFolder

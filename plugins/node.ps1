@@ -1,8 +1,19 @@
+param (
+  [string]$Version,
+  [bool]$UseLatestVersion
+)
+
 if($Online) {
-  $NodeFolder = DownloadString "https://nodejs.org/dist/latest/SHASUMS256.txt" |
-    %{ ([regex]'node-v[\d\.]+').Matches($_) | %{ $_.Value } } | Select-Object -First 1
+  if($UseLatestVersion) {
+    $NodeVersion = "latest"
+    $NodeFolder = DownloadString "https://nodejs.org/dist/latest/SHASUMS256.txt" |
+      %{ ([regex]'node-v[\d\.]+').Matches($_) | %{ $_.Value } } | Select-Object -First 1
+  } else {
+    $NodeVersion ="v$Version"
+    $NodeFolder = "node-$NodeVersion"
+  }
   $NodeFile = "node.exe"
-  $NodeDownloadUrl = "https://nodejs.org/dist/latest/win-x64/$NodeFile"
+  $NodeDownloadUrl = "https://nodejs.org/dist/$NodeVersion/win-x64/$NodeFile"
   $NodeDownloadFile = "$DownloadsFolder\$NodeFolder.exe"
   $NodeInstallFolder = "$ToolsFolder\$NodeFolder"
 
@@ -17,7 +28,8 @@ if($Online) {
       Copy-Item $NodeDownloadFile "$NodeInstallFolder\$NodeFile"
     }
   }
+} else {
+  $NodeInstallFolder = "$ToolsFolder\node-v$Version"
 }
 
-$NodeInstallFolder = FindTool node-*
 AddToPath $NodeInstallFolder

@@ -1,4 +1,9 @@
-$7ZipUrl = "http://www.7-zip.org/a/7z1604-x64.msi"
+param (
+  [ValidateNotNullOrEmpty()]
+  [string]$Version
+)
+
+$7ZipUrl = "https://www.7-zip.org/a/7z$Version-x64.msi"
 $7ZipFile = $7ZipUrl.Split("/") | Select-Object -Last 1
 $7ZipFolder = [io.path]::GetFileNameWithoutExtension($7ZipFile)
 $7ZipInstallerFile = "$DownloadsFolder\$7ZipFile"

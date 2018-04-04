@@ -1,6 +1,15 @@
+param (
+  [string]$Version,
+  [bool]$UseLatestVersion
+)
+
 if($Online) {
-  $LatestNpmInfo = DownloadString "https://registry.npmjs.org/npm/latest" | ConvertFrom-Json
-  $NpmVersion = $LatestNpmInfo.version
+  if($UseLatestVersion) {
+    $LatestNpmInfo = DownloadString "https://registry.npmjs.org/npm/latest" | ConvertFrom-Json
+    $NpmVersion = $LatestNpmInfo.version
+  } else {
+    $NpmVersion = $Version
+  }
   $NpmDownloadUrl = "https://registry.npmjs.org/npm/-/npm-$NpmVersion.tgz"
   $NpmFile = FileForUrl $NpmDownloadUrl
   $NpmDownloadFile = "$DownloadsFolder\$NpmFile"
@@ -22,7 +31,8 @@ if($Online) {
     Remove-Item -ErrorAction Ignore "$NodeModulesFolder\*.tar"
     Copy-Item "$NodeModulesFolder\npm\bin\*.*" $NpmInstallFolder
   }
+} else {
+  $NpmInstallFolder = "$ToolsFolder\npm-$Version"
 }
 
-$NpmInstallFolder = FindTool npm-*
 AddToPath $NpmInstallFolder
