@@ -29,8 +29,7 @@ Out-Info "Loading Plugins..."
 Get-ChildItem "$PluginsFolder\*.ps1" | %{
   Out-Title "[$($_.BaseName)]"
   $Version = $Config.versions."$($_.BaseName)"
-  $UseLatestVersion = $Version -eq "LATEST"
-  & $_ -Version $Version -UseLatestVersion $UseLatestVersion
+  & $_ -Version $Version -UseLatestVersion (!$Version)
 }
 
 Out-Console
