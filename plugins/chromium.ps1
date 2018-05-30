@@ -5,7 +5,7 @@ if($Online) {
   $ChromiumVersion = $ChromiumRelease.tag_name
   $ChromiumDownloadFile = "chromium-$ChromiumVersion.zip"
   $ChromiumDownloadUrl = $ChromiumRelease | Select-Object -Expand assets |
-    ?{ $_.name -eq "chromium-nosync.zip" } | 
+    ?{ $_.name -eq "chromium-sync.zip" } | 
     %{ $_.browser_download_url }
 }
 InstallTool -Name "Chromium" -Url $ChromiumDownloadUrl -Prefix chromium* -ToolFile $ChromiumDownloadFile
