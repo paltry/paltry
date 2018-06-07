@@ -21,5 +21,5 @@ Out-Info "Cleaning up unused tools..."
 Get-ChildItem "$ToolsFolder" |
   ?{ $_.PSIsContainer -And !($InstalledTools -Contains $_.FullName) } | %{
     Out-Info "Deleting $($_.FullName)"
-    Remove-Item -Recurse $_.FullName
+	cmd /c "rmdir /s /q $($_.FullName)"
 }
