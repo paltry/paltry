@@ -1,6 +1,17 @@
 {
   "cwd": ".",
-  "disabled": [],
+  "disabled": [
+    "//atom",
+    "//chromium",
+    "//eclipse",
+    "//git",
+    "//java",
+    "//maven",
+    "//node",
+    "//npm",
+    "//smartgit",
+    "//vscode"
+  ],
   "versions": {
     "7zip": "1801"
   }
