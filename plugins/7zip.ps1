@@ -20,5 +20,5 @@ if(!(Test-Path $7ZipInstalledFolder)) {
   Move-Item "$7ZipInstallerFolder\Files\7-Zip" $7ZipInstalledFolder -Force
   Remove-Item -Recurse -Force -ErrorAction Ignore $7ZipInstallerFolder
 }
-AddToPath $7ZipInstalledFolder
+FindBinAndAddToPath $7ZipInstalledFolder
 Add-Launch -Name "7-Zip" -Target "$7ZipInstalledFolder\7zFM.exe"

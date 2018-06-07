@@ -35,4 +35,4 @@ if($Online) {
   $NpmInstallFolder = "$ToolsFolder\npm-$Version"
 }
 
-AddToPath $NpmInstallFolder
+AddToolToPath $NpmInstallFolder

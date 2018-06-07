@@ -65,6 +65,16 @@ Function FindBin($ParentFolder) {
 Function FindBinAndAddToPath($ParentFolder) {
   $BinFolder = FindBin $ParentFolder
   AddToPath $BinFolder
+  AddInstalledTool $ParentFolder
+}
+
+Function AddToolToPath($ToolFolder) {
+  AddToPath $ToolFolder
+  AddInstalledTool $ToolFolder
+}
+
+Function AddInstalledTool($ToolFolder) {
+  $Global:ToolsInstalled += $ToolFolder
 }
 
 Function AddToPath($BinFolder) {
@@ -134,6 +144,11 @@ Function SetupFolders() {
   Remove-Item "$LaunchFolder\*"
 }
 
+Function Write-Files() {
+  Out-Console
+  Out-ToolsJson
+}
+
 Function Out-Console() {
 @"
 @echo off
@@ -141,4 +156,11 @@ set PATH=$($Global:PathExtensions -Join ';');%PATH%
 cd "$ConfigCwd"
 if "%*"=="" (start powershell) else (start %*)
 "@ | Out-FileForce "$LaunchFolder\console.cmd"
+}
+
+Function Out-ToolsJson() {
+  # Write-Host $Global:ToolsInstalled
+  [PSCustomObject]@{
+    installed = $Global:ToolsInstalled
+  } | ConvertTo-Json | Out-FileForce "$ToolsFolder\tools.json"
 }

@@ -19,9 +19,11 @@ $PluginsFolder = "$CurrentFolder\plugins"
 $LaunchFolder = "$CurrentFolder\launch"
 $Config = Get-Content 'config.json' | Out-String | ConvertFrom-Json
 $Online = Test-Connection -ComputerName 8.8.8.8 -Quiet -ErrorAction Ignore
-$Global:PathExtensions = @()
 $ConfigCwd = Resolve-Path -Path "$($Config.cwd)"
 $DisabledPlugins = $Config.disabled
+$Global:PathExtensions = @()
+$Global:ToolsInstalled = @()
+
 Import-Module $PWD\plugins\lib.psm1
 
 Out-Info "Setting Up..."
@@ -36,5 +38,5 @@ Get-ChildItem "$PluginsFolder\*.ps1" | %{
   }
 }
 
-Out-Console
-#explorer $LaunchFolder
+Write-Files
+explorer $LaunchFolder

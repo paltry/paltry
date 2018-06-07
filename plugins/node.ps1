@@ -32,4 +32,4 @@ if($Online) {
   $NodeInstallFolder = "$ToolsFolder\node-v$Version"
 }
 
-AddToPath $NodeInstallFolder
+FindBinAndAddToPath $NodeInstallFolder
