@@ -1,6 +1,7 @@
 {
+  "cwd": ".",
+  "disabled": [],
   "versions": {
     "7zip": "1801"
-  },
-  "cwd": "."
+  }
 }

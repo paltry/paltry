@@ -21,6 +21,7 @@ $Config = Get-Content 'config.json' | Out-String | ConvertFrom-Json
 $Online = Test-Connection -ComputerName 8.8.8.8 -Quiet -ErrorAction Ignore
 $Global:PathExtensions = @()
 $ConfigCwd = Resolve-Path -Path "$($Config.cwd)"
+$DisabledPlugins = $Config.disabled
 Import-Module $PWD\plugins\lib.psm1
 
 Out-Info "Setting Up..."
@@ -28,10 +29,12 @@ SetupFolders
 
 Out-Info "Loading Plugins..."
 Get-ChildItem "$PluginsFolder\*.ps1" | %{
-  Out-Title "[$($_.BaseName)]"
-  $Version = $Config.versions."$($_.BaseName)"
-  & $_ -Version $Version -UseLatestVersion (!$Version)
+  if(!($DisabledPlugins.Contains($_.BaseName))) {
+    Out-Title "[$($_.BaseName)]"
+    $Version = $Config.versions."$($_.BaseName)"
+    & $_ -Version $Version -UseLatestVersion (!$Version)
+  }
 }
 
 Out-Console
-explorer $LaunchFolder
+#explorer $LaunchFolder
