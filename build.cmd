@@ -20,6 +20,7 @@ $LaunchFolder = "$CurrentFolder\launch"
 $Config = Get-Content 'config.json' | Out-String | ConvertFrom-Json
 $Online = Test-Connection -ComputerName 8.8.8.8 -Quiet -ErrorAction Ignore
 $Global:PathExtensions = @()
+$ConfigCwd = Resolve-Path -Path "$($Config.cwd)"
 Import-Module $PWD\plugins\lib.psm1
 
 Out-Info "Setting Up..."

@@ -138,7 +138,7 @@ Function Out-Console() {
 @"
 @echo off
 set PATH=$($Global:PathExtensions -Join ';');%PATH%
-cd "$CurrentFolder"
+cd "$ConfigCwd"
 if "%*"=="" (start powershell) else (start %*)
 "@ | Out-FileForce "$LaunchFolder\console.cmd"
 }
