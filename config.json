@@ -1,5 +1,6 @@
 {
   "cwd": ".",
+  "env": {},
   "disabled": [
     "//atom",
     "//chromium",

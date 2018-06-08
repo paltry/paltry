@@ -139,6 +139,10 @@ Function Add-Launch($Name, $Target, $Arguments) {
   $Shortcut.Save()
 }
 
+Function AddEnvExtension($Property, $Value) {
+  $Global:EnvExtensions | Add-Member $Property $Value
+}
+
 Function Confirm-Folder($Folder) {
   New-Item -ItemType Directory -Force -Path $Folder | Out-Null
 }
@@ -157,16 +161,17 @@ Function Write-Files {
 }
 
 Function Out-Console {
+  AddEnvExtension "PATH" "$($Global:PathExtensions -Join ';');%PATH%"
+  $EnvOutputs = $Global:EnvExtensions.PSObject.Properties | %{ "set $($_.Name)=$($_.Value)" } | Out-String
 @"
 @echo off
-set PATH=$($Global:PathExtensions -Join ';');%PATH%
+$($EnvOutputs -Join '\n')
 cd "$ConfigCwd"
 if "%*"=="" (start powershell) else (start %*)
 "@ | Out-FileForce "$LaunchFolder\console.cmd"
 }
 
 Function Out-ToolsJson {
-  # Write-Host $Global:ToolsInstalled
   [PSCustomObject]@{
     installed = $Global:ToolsInstalled
   } | ConvertTo-Json | Out-FileForce "$ToolsFolder\tools.json"

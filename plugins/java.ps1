@@ -39,3 +39,4 @@ if($Online) {
 
 $JdkInstalledFolder = FindTool jdk*
 FindBinAndAddToPath $JdkInstalledFolder
+AddEnvExtension "JAVA_HOME" $JdkInstalledFolder

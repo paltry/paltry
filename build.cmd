@@ -23,6 +23,7 @@ $ConfigCwd = Resolve-Path -Path "$($Config.cwd)"
 $DisabledPlugins = $Config.disabled
 $Global:PathExtensions = @()
 $Global:ToolsInstalled = @()
+$Global:EnvExtensions = $Config.env
 
 Import-Module $PWD\plugins\lib.psm1
 
