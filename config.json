@@ -20,6 +20,7 @@
     "node": "",
     "npm": ""
   },
+  "path": [],
   "git": {
     "ssh": true,
     "repos": {}
