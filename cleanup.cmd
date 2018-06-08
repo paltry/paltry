@@ -12,10 +12,14 @@ ___SCRIPT___
 Set-PSDebug -Trace 0
 $CurrentFolder = $PWD
 $ToolsFolder = "$CurrentFolder\tools"
-$ToolsInfo = Get-Content "$ToolsFolder\tools.json" | Out-String | ConvertFrom-Json
+$ToolsInfo = Get-Content -ErrorAction Ignore "$ToolsFolder\tools.json" | Out-String | ConvertFrom-Json
 $InstalledTools = $ToolsInfo.installed
 
 Import-Module $PWD\plugins\lib.psm1
+
+if(!$InstalledTools) {
+  Exit-Error "No tools installed! Please run the build script first."
+}
 
 Out-Info "Cleaning up unused tools..."
 Get-ChildItem "$ToolsFolder" |

@@ -21,11 +21,18 @@ Function Out-FileForce($Path) {
   }
 }
 
+Function Exit-Error($Message) {
+  (New-Object -ComObject Wscript.Shell).Popup($Message, 0, "ERROR!", 16) | Out-Null
+  [Environment]::Exit(1)
+}
+
+Function Exit-Offline {
+  Exit-Error "Required files not downloaded and you are offline"
+}
+
 Function Confirm-Online {
   if(!$Online) {
-    $ErrorMessage = "Required files not downloaded and you are offline"
-    (New-Object -ComObject Wscript.Shell).Popup($ErrorMessage, 0, "ERROR!", 16)
-    exit 1
+    Exit-Offline
   }
 }
 
@@ -136,7 +143,7 @@ Function Confirm-Folder($Folder) {
   New-Item -ItemType Directory -Force -Path $Folder | Out-Null
 }
 
-Function SetupFolders() {
+Function SetupFolders {
   Confirm-Folder $DownloadsFolder
   Confirm-Folder $TempFolder
   Confirm-Folder $ToolsFolder
@@ -144,12 +151,12 @@ Function SetupFolders() {
   Remove-Item "$LaunchFolder\*"
 }
 
-Function Write-Files() {
+Function Write-Files {
   Out-Console
   Out-ToolsJson
 }
 
-Function Out-Console() {
+Function Out-Console {
 @"
 @echo off
 set PATH=$($Global:PathExtensions -Join ';');%PATH%
@@ -158,7 +165,7 @@ if "%*"=="" (start powershell) else (start %*)
 "@ | Out-FileForce "$LaunchFolder\console.cmd"
 }
 
-Function Out-ToolsJson() {
+Function Out-ToolsJson {
   # Write-Host $Global:ToolsInstalled
   [PSCustomObject]@{
     installed = $Global:ToolsInstalled
