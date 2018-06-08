@@ -1,12 +1,12 @@
-if($Online) {
+if ($Online) {
   $ChromiumRelease = (DownloadString "https://api.github.com/repos/henrypp/chromium/releases" | ConvertFrom-Json) |
-    ?{ $_.body -Like "*stable*" -And $_.tag_name -Like "*-win64" } |
-    Sort-Object tag_name -Descending | Select-Object -First 1
+  Where-Object { $_.body -like "*stable*" -and $_.tag_name -like "*-win64" } |
+  Sort-Object tag_name -Descending | Select-Object -First 1
   $ChromiumVersion = $ChromiumRelease.tag_name
   $ChromiumDownloadFile = "chromium-$ChromiumVersion.zip"
   $ChromiumDownloadUrl = $ChromiumRelease | Select-Object -Expand assets |
-    ?{ $_.name -eq "chromium-sync.zip" } | 
-    %{ $_.browser_download_url }
+  Where-Object { $_.Name -eq "chromium-sync.zip" } |
+  ForEach-Object { $_.browser_download_url }
 }
 InstallTool -Name "Chromium" -Url $ChromiumDownloadUrl -Prefix chromium* -ToolFile $ChromiumDownloadFile
 Add-Launch -Name "Chromium" -Target "$(FindTool chromium*)\chrome.exe"

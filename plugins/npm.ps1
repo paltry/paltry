@@ -1,9 +1,9 @@
-param (
+param(
   [string]$Version,
   [bool]$UseLatestVersion
 )
 
-if($UseLatestVersion) {
+if ($UseLatestVersion) {
   Confirm-Online
   $LatestNpmInfo = DownloadString "https://registry.npmjs.org/npm/latest" | ConvertFrom-Json
   $NpmVersion = $LatestNpmInfo.version
@@ -14,7 +14,7 @@ if($UseLatestVersion) {
 $NpmFile = "npm-$NpmVersion.tgz"
 $NpmDownloadFile = "$DownloadsFolder\$NpmFile"
 
-if(!(Test-Path $NpmDownloadFile)) {
+if (!(Test-Path $NpmDownloadFile)) {
   Confirm-Online
   $NpmDownloadUrl = "https://registry.npmjs.org/npm/-/npm-$NpmVersion.tgz"
   Out-Info "Downloading npm..."
@@ -24,7 +24,7 @@ if(!(Test-Path $NpmDownloadFile)) {
 $NpmInstallFolder = "$ToolsFolder\npm-$NpmVersion"
 $NodeModulesFolder = "$NpmInstallFolder\node_modules"
 
-if(!(Test-Path $NodeModulesFolder)) {
+if (!(Test-Path $NodeModulesFolder)) {
   Confirm-Folder $NodeModulesFolder
   Out-Info "Extracting npm..."
   7z x -aoa "$NpmDownloadFile" -o"$NodeModulesFolder" | Out-Null

@@ -1,4 +1,4 @@
-param (
+param(
   [ValidateNotNullOrEmpty()]
   [string]$Version
 )
@@ -9,8 +9,8 @@ $7ZipFolder = [io.path]::GetFileNameWithoutExtension($7ZipFile)
 $7ZipInstallerFile = "$DownloadsFolder\$7ZipFile"
 $7ZipInstallerFolder = "$TempFolder\$7ZipFolder"
 $7ZipInstalledFolder = "$ToolsFolder\$7ZipFolder"
-if(!(Test-Path $7ZipInstalledFolder)) {
-  if(!(Test-Path $7ZipInstallerFile)) {
+if (!(Test-Path $7ZipInstalledFolder)) {
+  if (!(Test-Path $7ZipInstallerFile)) {
     Confirm-Online
     Out-Info "Downloading 7-Zip..."
     DownloadFile $7ZipUrl $7ZipInstallerFile

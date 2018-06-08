@@ -1,7 +1,7 @@
-if($Online) {
+if ($Online) {
   $EclipseDownloadUrl = Invoke-WebRequest -Uri "https://www.eclipse.org/downloads/eclipse-packages" |
-    %{ $_.Links } | %{ $_.href } | ?{ $_ -Match "eclipse-jee-.+x86_64.zip$" } |
-    %{ "https://www.eclipse.org$_&mirror_id=1" }
+  ForEach-Object { $_.Links } | ForEach-Object { $_.href } | Where-Object { $_ -match "eclipse-jee-.+x86_64.zip$" } |
+  ForEach-Object { "https://www.eclipse.org$_&mirror_id=1" }
 }
 
 $EclipseWorkspace = "$CurrentFolder\eclipse-workspace"
@@ -9,16 +9,16 @@ $EclipseWorkspace = "$CurrentFolder\eclipse-workspace"
 InstallTool -Name "Eclipse" -Url $EclipseDownloadUrl -Prefix eclipse-jee*
 Add-Launch -Name "Eclipse" -Target "$(FindTool eclipse-jee*)\eclipse.exe" -Arguments "-data ""$EclipseWorkspace"""
 
-if(!(Test-Path $EclipseWorkspace)) {
-@"
+if (!(Test-Path $EclipseWorkspace)) {
+  @"
 eclipse.preferences.version=1
 showIntro=false
 "@ | Out-FileForce "$EclipseWorkspace\.metadata\.plugins\org.eclipse.core.runtime\.settings\org.eclipse.ui.prefs"
-@"
+  @"
 <?xml version="1.0" encoding="UTF-8"?>
 <state reopen="false"/>
 "@ | Out-FileForce "$EclipseWorkspace\.metadata\.plugins\org.eclipse.ui.intro\introstate"
-@"
+  @"
 editor_save_participant_org.eclipse.jdt.ui.postsavelistener.cleanup=true
 sp_cleanup.add_default_serial_version_id=true
 sp_cleanup.add_generated_serial_version_id=false
@@ -78,7 +78,7 @@ sp_cleanup.use_this_for_non_static_field_access_only_if_necessary=false
 sp_cleanup.use_this_for_non_static_method_access=true
 sp_cleanup.use_this_for_non_static_method_access_only_if_necessary=true
 "@ | Out-FileForce "$EclipseWorkspace\.metadata\.plugins\org.eclipse.core.runtime\.settings\org.eclipse.jdt.ui.prefs"
-@"
+  @"
 decorator_filetext_decoration={name}
 decorator_foldertext_decoration={name}
 decorator_projecttext_decoration={name} [{repository }{branch}{ branch_status}]
@@ -86,7 +86,7 @@ decorator_show_dirty_icon=true
 decorator_submoduletext_decoration={name} [{branch}{ branch_status}]{ short_message}
 eclipse.preferences.version=1
 "@ | Out-FileForce "$EclipseWorkspace\.metadata\.plugins\org.eclipse.core.runtime\.settings\org.eclipse.egit.ui.prefs"
-@"
+  @"
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.m2e.Maven2LaunchConfigurationType">
   <booleanAttribute key="M2_DEBUG_OUTPUT" value="false"/>
@@ -104,10 +104,10 @@ eclipse.preferences.version=1
   <stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="`${project_loc}"/>
 </launchConfiguration>
 "@ | Out-FileForce "$EclipseWorkspace\.metadata\.plugins\org.eclipse.debug.core\.launches\Clean Install Current Project.launch"
-@"
+  @"
 org.eclipse.ui.commands=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<org.eclipse.ui.commands>\r\n<keyBinding commandId\="org.eclipse.m2e.core.pomFileAction.run" contextId\="org.eclipse.ui.contexts.window" keyConfigurationId\="org.eclipse.ui.defaultAcceleratorConfiguration" keySequence\="CTRL+SHIFT+B"/>\r\n<keyBinding contextId\="org.eclipse.ui.contexts.window" keyConfigurationId\="org.eclipse.ui.defaultAcceleratorConfiguration" keySequence\="ALT+SHIFT+X M"/>\r\n<keyBinding contextId\="org.eclipse.ui.contexts.window" keyConfigurationId\="org.eclipse.ui.defaultAcceleratorConfiguration" keySequence\="CTRL+SHIFT+B"/>\r\n<keyBinding commandId\="org.eclipse.debug.ui.commands.ToggleBreakpoint" contextId\="org.eclipse.ui.contexts.window" keyConfigurationId\="org.eclipse.ui.defaultAcceleratorConfiguration" keySequence\="SHIFT+B"/>\r\n</org.eclipse.ui.commands>
 "@ | Out-FileForce "$EclipseWorkspace\.metadata\.plugins\org.eclipse.core.runtime\.settings\org.eclipse.ui.workbench.prefs"
-@"
+  @"
 Console.limitConsoleOutput=false
 "@ | Out-FileForce "$EclipseWorkspace\.metadata\.plugins\org.eclipse.core.runtime\.settings\org.eclipse.debug.ui.prefs"
 }
