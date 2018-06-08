@@ -11,6 +11,11 @@ Function Out-Error($Message) {
   Write-Host -ForegroundColor "Red" $Message
 }
 
+Function Pause {
+  Write-Host "Press any key to continue..."
+  $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") | Out-Null
+}
+
 Function Out-FileForce($Path) {
   Process {
     if(Test-Path $path) {
