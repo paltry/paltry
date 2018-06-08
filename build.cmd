@@ -40,4 +40,6 @@ Get-ChildItem "$PluginsFolder\*.ps1" | %{
 }
 
 Write-Files
-explorer $LaunchFolder
+if(!($DisabledPlugins.Contains("launch"))) {
+  explorer $LaunchFolder
+}

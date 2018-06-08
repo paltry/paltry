@@ -1,5 +1,5 @@
 {
-  "cwd": ".",
+  "cwd": "..",
   "env": {},
   "disabled": [
     "//atom",
@@ -7,6 +7,7 @@
     "//eclipse",
     "//git",
     "//java",
+	"//launch",
     "//maven",
     "//node",
     "//npm",

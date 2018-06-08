@@ -1,0 +1,24 @@
+{
+  "cwd": "~\\Developer",
+  "env": {},
+  "disabled": [
+    "atom",
+    "chromium",
+    "eclipse",
+    "java",
+	"launch",
+    "maven",
+    "node",
+    "npm",
+    "smartgit",
+    "vscode"
+  ],
+  "versions": {
+    "7zip": "1801"
+  },
+  "git": {
+    "repos": {
+      "paltry": "https://github.com/paltry/paltry.git"
+    }
+  }
+}
