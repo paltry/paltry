@@ -10,6 +10,6 @@ exit
 
 ___SCRIPT___
 Set-PSDebug -Trace 0
-Install-Module -Name PowerShell-Beautifier
+Install-Module -Name PowerShell-Beautifier -Scope "CurrentUser"
 Import-Module PowerShell-Beautifier.psd1
 Get-ChildItem -Path $PWD -Include *.ps1,*.psm1 -Recurse | Edit-DTWBeautifyScript
