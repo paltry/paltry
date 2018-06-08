@@ -12,7 +12,7 @@ ___SCRIPT___
 Set-PSDebug -Trace 0
 $CurrentFolder = $PWD
 $UserProfile = $Env:USERPROFILE
-$DownloadsFolder = "$UserProfile\Downloads"
+$DownloadsFolder = "$UserProfile\Downloads\paltry"
 $TempFolder = "$UserProfile\Temp"
 $ToolsFolder = "$CurrentFolder\tools"
 $PluginsFolder = "$CurrentFolder\plugins"
