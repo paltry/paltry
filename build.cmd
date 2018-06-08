@@ -35,7 +35,7 @@ Get-ChildItem "$PluginsFolder\*.ps1" | %{
   if(!($DisabledPlugins.Contains($_.BaseName))) {
     Out-Title "[$($_.BaseName)]"
     $Version = $Config.versions."$($_.BaseName)"
-    & $_ -Version $Version -UseLatestVersion (!$Version)
+    & $_ -Version $Version -UseLatestVersion (!$Version) -Config ($Config."$($_.BaseName)")
   }
 }
 
