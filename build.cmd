@@ -1,5 +1,5 @@
 @echo off
-title Build Paltry Console
+title Build Paltry
 
 set TMP_SCRIPT="%TMP%\%~n0.ps1"
 for /f "delims=:" %%a in ('findstr -n "^___" %0') do set "Line=%%a"
