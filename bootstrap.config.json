@@ -1,8 +1,8 @@
 {
   "cwd": "~\\Developer",
-  "env": {},
   "disabled": [
     "atom",
+    "bin",
     "chromium",
     "eclipse",
     "java",
