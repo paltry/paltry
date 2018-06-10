@@ -19,10 +19,24 @@ if ($Config.ssh -and !(Test-Path $SshKeyPath)) {
   Pause
 }
 
+if ($Online) {
+  if (!(Test-Path "$CurrentFolder\.git")) {
+    git init
+    git remote add origin https://github.com/paltry/paltry.git
+    git fetch
+    Move-Item config.json backup.config.json
+    git checkout master -f
+    Move-Item -Force backup.config.json config.json
+  } else {
+    git pull
+  }
+}
+
 if ($Config.repos) {
   $Config.repos.PSObject.Properties | ForEach-Object {
     $RepoFolder = "$ConfigCwd\$($_.Name)"
     if (!(Test-Path $RepoFolder)) {
+      Confirm-Online
       $RepoUrl = $_.Value
       git clone $RepoUrl $RepoFolder
       if ($LastExitCode) {
