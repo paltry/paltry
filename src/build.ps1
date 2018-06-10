@@ -7,6 +7,7 @@ $ToolsFolder = "$CurrentFolder\tools"
 $SourceFolder = "$CurrentFolder\src"
 $PluginsFolder = "$SourceFolder\plugins"
 $LaunchFolder = "$CurrentFolder\launch"
+$PaltryBinFolder = "$CurrentFolder\bin"
 $Config = Get-Content 'config.json' | Out-String | ConvertFrom-Json
 $Online = Test-Connection -ComputerName 8.8.8.8 -Quiet -ErrorAction Ignore
 $ConfigCwd = Resolve-Path -Path "$($Config.cwd)"

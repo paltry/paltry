@@ -158,6 +158,7 @@ function SetupFolders {
   Confirm-Folder $ToolsFolder
   Confirm-Folder $LaunchFolder
   Remove-Item "$LaunchFolder\*"
+  Remove-Item "$PaltryBinFolder\*"
 }
 
 function Write-Files {
@@ -167,6 +168,7 @@ function Write-Files {
 
 function Out-Console {
   AddEnvExtension "PATH" "$($Global:PathExtensions -Join ';');%PATH%"
+  AddEnvExtension "PALTRY_HOME" $CurrentFolder
   $EnvOutputs = $Global:EnvExtensions.PSObject.Properties | ForEach-Object { "set $($_.Name)=$($_.Value)" } | Out-String
   @"
 @echo off

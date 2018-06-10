@@ -21,6 +21,14 @@
     "npm": ""
   },
   "path": [],
+  "bin": {
+    "paltry-cleanup": [
+      "powershell -ExecutionPolicy Bypass -File %PALTRY_HOME%\\src\\cleanup.ps1"
+    ],
+    "paltry-format": [
+      "powershell -ExecutionPolicy Bypass -File %PALTRY_HOME%\\src\\format.ps1"
+    ]
+  },
   "git": {
     "ssh": true,
     "repos": {}

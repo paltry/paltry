@@ -1,7 +1,6 @@
 Set-PSDebug -Trace 0
-$CurrentFolder = $PWD
-$SourceFolder = "$CurrentFolder\src"
-$ToolsFolder = "$CurrentFolder\tools"
+$SourceFolder = "$Env:PALTRY_HOME\src"
+$ToolsFolder = "$Env:PALTRY_HOME\tools"
 $ToolsInfo = Get-Content -ErrorAction Ignore "$ToolsFolder\tools.json" | Out-String | ConvertFrom-Json
 $InstalledTools = $ToolsInfo.installed
 
