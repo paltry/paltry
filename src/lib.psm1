@@ -158,7 +158,6 @@ function SetupFolders {
   Confirm-Folder $ToolsFolder
   Confirm-Folder $LaunchFolder
   Remove-Item "$LaunchFolder\*"
-  Remove-Item "$PaltryBinFolder\*"
 }
 
 function Write-Files {
