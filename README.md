@@ -15,7 +15,7 @@
 - Open the extracted `paltry` folder
 - Configure your environment
   - If you have an existing `config.json` already prepared, overwrite the one in the extracted Paltry
-  - Otherwise consider editing the default `config.json` to make it your own at this point
+  - Otherwise consider [editing the default `config.json`](#configuration) to make it your own at this point
     - You can always customize this later and rerun the build
     - The default config comes with all the tools but some features require additional configuration
 - Double click on `build.cmd` in your `paltry` folder
@@ -30,3 +30,23 @@
     - _New toolbar..._
     - Select the same path as the window launched after the build
       - Protip: you can copy the full path from the address bar of each
+
+## Configuration
+
+The only file users should modify is `config.json`. It is intended to encompass all user-configurable behavior. The following is a definition of the supported configuration options.
+
+- `cwd (string)` - The current working directory to use when launching the console.
+- `env ({string: string})` - Environment variables to set for the portable environment. Note that `Path` is special since it is appended to by Paltry and so should be extended with the `path` option below.
+- `disabled ([string])` - A blacklist of the plugins not to run. Note that nonexistant plugins are ignored. The default config takes advantage of this to list available plugins "commented out" by prefixing them with `//`. Removing the "comment" in this list will actually disable that plugin. If you don't ever intend to disable a plugin feel free to remove it from this list entirely.
+- `versions ({string: string})` - Most tools support installing the latest available version except for 7zip, which must have a version set. The `maven`, `node`, and `npm` tools support specifying an exact version here. An empty string value or omitting a key entirely defaults to the latest version.
+- `path ([string])` - An array of additional locations to add to your path. Usefully for adding other tools not supported by Paltry that you manually downloaded.
+- `scripts ({string: [string]})` - Custom scripts are defined with the name as the key (this becomes the filename/command used to call them) and an array of the lines in the script as the value. Note these will create batch files that are run with the command prompt.
+- `git (object)`
+  - `ssh (boolean)` - Enabling this will make sure you have SSH keys setup, generating them if needed. When keys are generated, the public key will be printed to the console. Please make sure to add this public key to any git remotes you intend to communicate with using SSH.
+  - `repos ({string: string})` - Git repositories you want Paltry to clone automatically on your behalf. The local folder to use is the key with the remote URL as the value.
+- `maven (object)`
+  - `servers ([string])` - If you use priave Maven repos (such as a Nexus server) then add their ids in an array to this property. The build will prompt for your credentials and will save encrypted versions of them to `settings.xml`. Different credentials per server are not supported at this time.
+
+## License
+
+Paltry is MIT licensed. See [LICENSE](LICENSE.md).
