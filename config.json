@@ -21,7 +21,7 @@
     "npm": ""
   },
   "path": [],
-  "bin": {
+  "scripts": {
     "paltry-cleanup": [
       "powershell -ExecutionPolicy Bypass -File %PALTRY_HOME%\\src\\cleanup.ps1"
     ],

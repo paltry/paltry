@@ -3,11 +3,11 @@ param(
 )
 
 if ($Config) {
-  Confirm-Folder $PaltryBinFolder
-  Remove-Item "$PaltryBinFolder\*"
-  AddToPath $PaltryBinFolder
+  Confirm-Folder $ScriptsFolder
+  Remove-Item "$ScriptsFolder\*"
+  AddToPath $ScriptsFolder
   $Config.PSObject.Properties | ForEach-Object {
-    $BinScriptPath = "$PaltryBinFolder\$($_.Name).cmd"
+    $BinScriptPath = "$ScriptsFolder\$($_.Name).cmd"
     $_.Value | Out-String | Out-FileForce $BinScriptPath
   }
 }
