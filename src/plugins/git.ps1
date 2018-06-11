@@ -24,11 +24,12 @@ if ($Online) {
     git init
     git remote add origin https://github.com/paltry/paltry.git
     git fetch
-    Move-Item config.json backup.config.json
+  Move-Item config.json backup.config.json
     git checkout master -f
-    Move-Item -Force backup.config.json config.json
+  Move-Item -Force backup.config.json config.json
   } else {
-    git pull
+    git fetch
+    git merge --ff-only origin/master
   }
 }
 
