@@ -15,7 +15,9 @@
 - Open the extracted `paltry` folder
 - Configure your environment
   - If you have an existing `config.json` already prepared, overwrite the one in the extracted Paltry
-  - Otherwise consider editing `config.json` to make it your own at this point
+  - Otherwise consider editing the default `config.json` to make it your own at this point
+    - You can always customize this later and rerun the build
+    - The default config comes with all the tools but some features require additional configuration
 - Double click on `build.cmd` in your `paltry` folder
   - If you get a security warning - uncheck _Always ask before opening this file_ and click Run
 - Paltry will now build
