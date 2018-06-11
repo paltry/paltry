@@ -144,8 +144,8 @@ function Add-Launch ($Name,$Target,$Arguments) {
   $Shortcut.Save()
 }
 
-function AddEnvExtension ($Property,$Value) {
-  $Global:EnvExtensions | Add-Member $Property $Value
+function AddEnvExtension ($Name,$Value) {
+  $Global:EnvExtensions += "set $Name=$Value"
 }
 
 function Confirm-Folder ($Folder) {
@@ -167,11 +167,9 @@ function Write-Files {
 
 function Out-Console {
   AddEnvExtension "PATH" "$($Global:PathExtensions -Join ';');%PATH%"
-  AddEnvExtension "PALTRY_HOME" $CurrentFolder
-  $EnvOutputs = $Global:EnvExtensions.PSObject.Properties | ForEach-Object { "set $($_.Name)=$($_.Value)" } | Out-String
   @"
 @echo off
-$($EnvOutputs -Join '\n')
+$(($Global:EnvExtensions | Out-String) -Join '\n')
 cd "$ConfigCwd"
 if "%*"=="" (start powershell) else (start %*)
 "@ | Out-FileForce "$LaunchFolder\console.cmd"
