@@ -3,7 +3,7 @@
 ## Prerequisites
 
 - Windows 10 (or upgrade to [PowerShell 5.1](https://www.microsoft.com/en-us/download/details.aspx?id=54616))
-- No applications preloaded
+- No applications need be preloaded
 - No special permissions outside of being able to write to a user folder
 
 ## Installation
