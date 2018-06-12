@@ -1,5 +1,21 @@
 # Paltry Portable Environment
 
+Paltry creates and updates a portable development environment for recent Windows installs. You might want this if your account doesn't have admin permissions, to avoid interfering with any software installed on the system, or to apply the best practices of DevOps to your development environment. Setup a new machine in minutes instead of hours and keep it up-to-date just as easily. [Configurable](#configuration) and scriptable to accommodate your needs.
+
+The following tools are available:
+
+- 7-Zip
+- Atom
+- Chromium
+- Eclipse IDE for Java EE Developers (with workspace enhancements included)
+- Git (able to setup SSH keys, auto clone repos, and update Paltry itself)
+- Java JDK 8 (with unlimited strength JCE)
+- Maven (encrypted server passwords support included)
+- Node.js
+- npm
+- SmartGit
+- Visual Studio Code
+
 ## Prerequisites
 
 - Windows 10 (or upgrade to [PowerShell 5.1](https://www.microsoft.com/en-us/download/details.aspx?id=54616))
