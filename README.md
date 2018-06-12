@@ -4,17 +4,17 @@ Paltry creates and updates a portable development environment for recent Windows
 
 The following tools are available:
 
-- 7-Zip
-- Atom
-- Chromium
-- Eclipse IDE for Java EE Developers (with workspace enhancements included)
-- Git (able to setup SSH keys, auto clone repos, and update Paltry itself)
-- Java JDK 8 (with unlimited strength JCE)
-- Maven (encrypted server passwords support included)
-- Node.js
-- npm
-- SmartGit
-- Visual Studio Code
+- [7-Zip](https://www.7-zip.org)
+- [Atom](https://atom.io)
+- [Chromium](https://www.chromium.org)
+- [Eclipse](https://www.eclipse.org) IDE for Java EE Developers (with workspace enhancements included)
+- [Git](https://git-scm.com) (able to setup SSH keys, auto clone repos, and update Paltry itself)
+- [Java](https://www.oracle.com/java/index.html) JDK 8 (with unlimited strength JCE)
+- [Apache Maven](https://maven.apache.org) (encrypted server passwords support included)
+- [Node.js](https://nodejs.org)
+- [npm](https://www.npmjs.com)
+- [SmartGit](https://www.syntevo.com/smartgit)
+- [Visual Studio Code](https://code.visualstudio.com)
 
 ## Prerequisites
 
