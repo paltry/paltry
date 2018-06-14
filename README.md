@@ -61,6 +61,7 @@ The only file users should modify is `config.json`. It is intended to encompass 
   - `ssh (boolean)` - Enabling this will make sure you have SSH keys setup, generating them if needed. When keys are generated, the public key will be printed to the console. Please make sure to add this public key to any git remotes you intend to communicate with using SSH.
   - `repos ({string: string})` - Git repositories you want Paltry to clone automatically on your behalf. The local folder to use is the key with the remote URL as the value.
 - `maven (object)`
+  - `cleanup (boolean)` - Optionally cleanup remote repo data from your m2 repo. This will resolve some issues with not finding certain artifacts at the cost of a longer next build.
   - `servers ([string])` - If you use private Maven repos (such as a Nexus server) then add their ids in an array to this property. The build will prompt for your credentials and will save encrypted versions of them to `settings.xml`. Different credentials per server are not supported at this time.
 
 ## License

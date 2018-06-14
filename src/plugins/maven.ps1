@@ -55,7 +55,7 @@ if ($Config.servers -and $Config.servers.Length) {
   }
 }
 
-if (Test-Path $MavenRepo) {
+if ((Test-Path $MavenRepo) -and $Config.cleanup) {
   Out-Info "Cleaning up remote m2 repo data..."
   Get-ChildItem -Recurse $MavenRepo -Include @("_maven.repositories","_remote.repositories",
     "maven-metadata-local.xml","*.lastUpdated","resolver-status.properties") |
