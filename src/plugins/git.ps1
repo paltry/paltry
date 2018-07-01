@@ -28,6 +28,7 @@ if ($Online) {
     git checkout master -f
     Move-Item -Force backup.config.json config.json
   } else {
+    Out-Info "Updating Paltry..."
     git fetch
     git merge --ff-only origin/master
   }
