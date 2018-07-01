@@ -38,6 +38,11 @@
     "servers": []
   },
   "vscode": {
+    "extensions": [
+      "christian-kohler.path-intellisense",
+      "wayou.vscode-todo-highlight",
+      "eamodio.gitlens"
+    ],
     "settings": {
       "editor.tabSize": 2,
       "editor.detectIndentation": false,

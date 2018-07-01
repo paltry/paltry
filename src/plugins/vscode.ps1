@@ -8,6 +8,12 @@ $VsCodeDataFolder = "$CurrentFolder\vscode"
 InstallTool -Name "VS Code" -Url $VsCodeUrl -Prefix VSCode*
 Add-Launch -Name "VS Code" -Target "$(FindTool VSCode*)\Code.exe" -Arguments "--user-data-dir ""$VsCodeDataFolder"" --extensions-dir ""$VsCodeDataFolder\extensions"""
 
+if ($Config.extensions -and $Config.extensions.Length) {
+  $Config.extensions | ForEach-Object {
+    code --extensions-dir "$VsCodeDataFolder\extensions" --install-extension $_
+  }
+}
+
 if ($Config.settings) {
   Out-Info "Saving custom VS Code settings..."
   $VsCodeSettingsFile = "$VsCodeDataFolder\User\settings.json"
