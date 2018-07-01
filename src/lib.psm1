@@ -19,7 +19,7 @@ function Pause {
 function Out-FileForce ($Path) {
   process {
     if (Test-Path $path) {
-      Out-File -Force -FilePath $Path -InputObject $_
+      [IO.File]::WriteAllLines($Path,$_)
     } else {
       New-Item -Force -Path $Path -Value $_ -Type File | Out-Null
     }
@@ -175,8 +175,14 @@ if "%*"=="" (start powershell) else (start %*)
 "@ | Out-FileForce "$LaunchFolder\console.cmd"
 }
 
+function Out-Json ($Path) {
+  process {
+    $_ | ConvertTo-Json -Depth 100 | Out-FileForce $Path
+  }
+}
+
 function Out-ToolsJson {
   [pscustomobject]@{
     installed = $Global:ToolsInstalled
-  } | ConvertTo-Json | Out-FileForce "$ToolsFolder\tools.json"
+  } | Out-Json "$ToolsFolder\tools.json"
 }

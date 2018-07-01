@@ -63,6 +63,8 @@ The only file users should modify is `config.json`. It is intended to encompass 
 - `maven (object)`
   - `cleanup (boolean)` - Optionally cleanup remote repo data from your m2 repo. This will resolve some issues with not finding certain artifacts at the cost of a longer next build.
   - `servers ([string])` - If you use private Maven repos (such as a Nexus server) then add their ids in an array to this property. The build will prompt for your credentials and will save encrypted versions of them to `settings.xml`. Different credentials per server are not supported at this time.
+- `vscode (object)`
+  - `settings (object)` - User settings for VS Code. Note that these will override any existing settings on a per-property basis. Apologies in advance for the ugly formatting on the JSON output.
 
 ## License
 

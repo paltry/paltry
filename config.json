@@ -36,5 +36,16 @@
   "maven": {
     "cleanup": true,
     "servers": []
+  },
+  "vscode": {
+    "settings": {
+      "editor.tabSize": 2,
+      "editor.detectIndentation": false,
+      "files.eol": "\n",
+      "editor.formatOnSave": true,
+      "explorer.openEditors.visible": 0,
+      "files.autoSave": "onFocusChange",
+      "workbench.editor.enablePreview": false
+    }
   }
 }
