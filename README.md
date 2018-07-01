@@ -57,6 +57,11 @@ The only file users should modify is `config.json`. It is intended to encompass 
 - `versions ({string: string})` - Most tools support installing the latest available version except for 7zip, which must have a version set. The `maven`, `node`, and `npm` tools support specifying an exact version here. An empty string value or omitting a key entirely defaults to the latest version.
 - `path ([string])` - An array of additional locations to add to your path. Usefully for adding other tools not supported by Paltry that you manually downloaded.
 - `scripts ({string: [string]})` - Custom scripts are defined with the name as the key (this becomes the filename/command used to call them) and an array of the lines in the script as the value. Note these will create batch files that are run with the command prompt.
+- `eclipse (object)`
+  - `skipIntro (boolean)` - Bypass displaying maximized welcome screen that blocks immediate use.
+  - `unlimitedConsoleOutput (boolean)` - Don't discard console output after a limited number of characters.
+  - `gitIconDecorations (boolean)` - Use icons to label Git modified resources instead of text.
+  - `cleanInstallMavenLaunchConfig (boolean)` - Add a launch configuration for Maven to perform a `clean install` build on the current project.
 - `git (object)`
   - `ssh (boolean)` - Enabling this will make sure you have SSH keys setup, generating them if needed. When keys are generated, the public key will be printed to the console. Please make sure to add this public key to any git remotes you intend to communicate with using SSH.
   - `repos ({string: string})` - Git repositories you want Paltry to clone automatically on your behalf. The local folder to use is the key with the remote URL as the value.
