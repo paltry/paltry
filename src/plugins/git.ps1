@@ -20,18 +20,19 @@ if ($Config.ssh -and !(Test-Path $SshKeyPath)) {
 }
 
 if ($Online) {
+  Move-Item config.json backup.config.json
   if (!(Test-Path "$CurrentFolder\.git")) {
     git init
     git remote add origin https://github.com/paltry/paltry.git
     git fetch
-    Move-Item config.json backup.config.json
     git checkout master -f
-    Move-Item -Force backup.config.json config.json
   } else {
     Out-Info "Updating Paltry..."
     git fetch
+    git checkout -- config.json
     git merge --ff-only origin/master
   }
+  Move-Item -Force backup.config.json config.json
 }
 
 if ($Config.repos) {
