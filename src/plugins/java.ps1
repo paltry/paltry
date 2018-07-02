@@ -1,6 +1,7 @@
 if ($Online) {
   $JdkUrl = DownloadString "https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" |
-  ForEach-Object { ([regex]'http.+-windows-x64.exe').Matches($_) | ForEach-Object { $_.Value } } | Select-Object -First 1
+  ForEach-Object { ([regex]'http.+-windows-x64.exe').Matches($_) | Sort-Object Value -Descending |
+    ForEach-Object { $_.Value } } | Select-Object -First 1
   $JceUrl = "http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip"
   $JdkFile = $JdkUrl.Split("/") | Select-Object -Last 1
   $JdkFolder = [io.path]::GetFileNameWithoutExtension($JdkFile)
