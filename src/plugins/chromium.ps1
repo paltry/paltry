@@ -9,4 +9,12 @@ if ($Online) {
   ForEach-Object { $_.browser_download_url }
 }
 InstallTool -Name "Chromium" -Url $ChromiumDownloadUrl -Prefix chromium* -ToolFile $ChromiumDownloadFile
-Add-Launch -Name "Chromium" -Target "$(FindTool chromium*)\chrome.exe"
+$ChromiumInstallFolder = FindTool chromium*
+$ChromiumOriginalExecutable = "$ChromiumInstallFolder\chrome.exe"
+$ChromiumExecutable = "$ChromiumInstallFolder\chromium.exe"
+
+if((Test-Path $ChromiumOriginalExecutable) -and !(Test-Path $ChromiumExecutable)) {
+  Move-Item -Force $ChromiumOriginalExecutable $ChromiumExecutable
+}
+
+Add-Launch -Name "Chromium" -Target "$ChromiumExecutable"
