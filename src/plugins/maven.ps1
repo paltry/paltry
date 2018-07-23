@@ -16,6 +16,7 @@ $MavenUserFolder = "$UserProfile\.m2"
 $MavenSettings = "$MavenUserFolder\settings.xml"
 $MavenSecuritySettings = "$MavenUserFolder\settings-security.xml"
 $MavenRepo = "$MavenUserFolder\repository"
+Confirm-Folder $MavenUserFolder
 
 if ($Config.servers -and $Config.servers.Length) {
   if (!(Test-Path $MavenSecuritySettings)) {
