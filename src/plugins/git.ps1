@@ -10,8 +10,10 @@ if ($Online) {
 }
 InstallTool -Name "Git" -Url $PortableGitUrl -Prefix PortableGit*
 
-$SshKeyPath = "$UserProfile\.ssh\id_rsa"
+$SshFolder = "$UserProfile\.ssh"
+$SshKeyPath = "$SshFolder\id_rsa"
 if ($Config.ssh -and !(Test-Path $SshKeyPath)) {
+  Confirm-Folder $SshFolder
   $GitInstallPath = $JdkInstalledFolder = FindTool PortableGit*
   & $GitInstallPath\usr\bin\ssh-keygen.exe -t rsa -C """""" -N """""" -f $SshKeyPath
   $PublicKey = Get-Content "$SshKeyPath.pub"
