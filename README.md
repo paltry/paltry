@@ -38,7 +38,7 @@ The following tools are available:
     - The default config comes with all the tools but some features require additional configuration
 - Double click on `build.cmd` in your `paltry` folder
   - Paltry will now build
-  - The first time this will take anywhere from 1-15 minutes depending on your selected plugins and network speed
+  - The first time this will take anywhere from 1-15+ minutes depending on your selected plugins and network speed
   - By default - when the build completes - an explorer window will pop up with various shortcuts
     - Feel free to launch any of the tools from here
     - For bonus points add these as a toolbar
