@@ -122,7 +122,7 @@ function InstallTool ($Name,$Url,$Prefix,$ToolFile) {
     }
     Out-Info "Extracting $Name..."
     Remove-Item -Recurse -ErrorAction Ignore $ExtractedFolder
-    7z x "$DownloadedFile" -o"$ExtractedFolder" | Out-Null
+    7z x "$DownloadedFile" -o"$ExtractedFolder"
     $ExtractedContents = Get-ChildItem $ExtractedFolder
     if ($ExtractedContents.Length -eq 1 -and $ExtractedContents[0].PSIsContainer) {
       Move-Item $ExtractedContents[0].FullName $InstalledFolder
