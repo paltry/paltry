@@ -125,11 +125,11 @@ function InstallTool ($Name,$Url,$Prefix,$ToolFile) {
     7z x "$DownloadedFile" -o"$ExtractedFolder"
     $ExtractedContents = Get-ChildItem $ExtractedFolder
     if ($ExtractedContents.Length -eq 1 -and $ExtractedContents[0].PSIsContainer) {
-      Move-Item $ExtractedContents[0].FullName $InstalledFolder
-      Remove-Item $ExtractedFolder
+      Copy-Item $ExtractedContents[0].FullName -Destination $InstalledFolder -Recurse
     } else {
-      Move-Item $ExtractedFolder $InstalledFolder
+      Copy-Item $ExtractedFolder -Destination $InstalledFolder -Recurse
     }
+    Remove-Item -Recurse $ExtractedFolder
   }
 
   FindBinAndAddToPath $InstalledFolder
