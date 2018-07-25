@@ -13,7 +13,7 @@ $ChromiumInstallFolder = FindTool chromium*
 $ChromiumOriginalExecutable = "$ChromiumInstallFolder\chrome.exe"
 $ChromiumExecutable = "$ChromiumInstallFolder\chromium.exe"
 
-if((Test-Path $ChromiumOriginalExecutable) -and !(Test-Path $ChromiumExecutable)) {
+if ((Test-Path $ChromiumOriginalExecutable) -and !(Test-Path $ChromiumExecutable)) {
   Move-Item -Force $ChromiumOriginalExecutable $ChromiumExecutable
 }
 
