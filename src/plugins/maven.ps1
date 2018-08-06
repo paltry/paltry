@@ -5,7 +5,7 @@ param(
 )
 
 if ($Online -and $UseLatestVersion) {
-  $Version = Invoke-WebRequest -Uri "https://archive.apache.org/dist/maven/maven-3" |
+  $Version = Get-WebRequest "https://archive.apache.org/dist/maven/maven-3" |
   ForEach-Object { $_.Links } | ForEach-Object { $_.innerText -replace "/","" } | Where-Object { $_ -match "3." } |
   Sort-Object -Descending | Select-Object -First 1
 }

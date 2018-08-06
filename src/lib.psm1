@@ -58,6 +58,14 @@ function DownloadFile ($Url,$Path) {
   return $WebClient.DownloadFile($Url,$Path)
 }
 
+function Get-WebRequest ($Url) {
+  $HtmlResponse = DownloadString ($Url)
+  $RawResponse = [System.Text.Encoding]::Unicode.GetBytes($HtmlResponse)
+  $Html = New-Object -Com "HTMLFile"
+  $Html.write($RawResponse)
+  return $Html
+}
+
 function FileForUrl ($Url) {
   $File = $Url.Split("/") | Select-Object -Last 1
   return $File
