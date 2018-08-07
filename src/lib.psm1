@@ -62,7 +62,13 @@ function Get-WebRequest ($Url) {
   $HtmlResponse = DownloadString ($Url)
   $RawResponse = [System.Text.Encoding]::Unicode.GetBytes($HtmlResponse)
   $Html = New-Object -Com "HTMLFile"
-  $Html.write($RawResponse)
+  try {
+    $Html.write($RawResponse)
+  }
+  catch {
+    # Older versions of PowerShell
+    $Html.IHTMLDocument2_write($RawResponse)
+  }
   return $Html
 }
 
