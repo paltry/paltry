@@ -19,8 +19,10 @@ if ($Config.settings) {
   $VsCodeSettingsFile = "$VsCodeDataFolder\User\settings.json"
   $ExistingVsCodeSettings = Get-Content -ErrorAction Ignore $VsCodeSettingsFile | Out-String | ConvertFrom-Json
   $VsCodeSettings = New-Object PsObject
-  $ExistingVsCodeSettings.PSObject.Properties | ForEach-Object {
-    $VsCodeSettings | Add-Member -Force -MemberType $_.MemberType -Name $_.Name -Value $_.Value
+  if ($ExistingVsCodeSettings) {
+    $ExistingVsCodeSettings.PSObject.Properties | ForEach-Object {
+      $VsCodeSettings | Add-Member -Force -MemberType $_.MemberType -Name $_.Name -Value $_.Value
+    }
   }
   $Config.settings.PSObject.Properties | ForEach-Object {
     $VsCodeSettings | Add-Member -Force -MemberType $_.MemberType -Name $_.Name -Value $_.Value
