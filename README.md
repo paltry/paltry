@@ -13,6 +13,7 @@ The following tools are available:
 - [Apache Maven](https://maven.apache.org) (encrypted server passwords support included)
 - [Node.js](https://nodejs.org)
 - [npm](https://www.npmjs.com)
+- [OpenSSL](https://www.openssl.org)
 - [SmartGit](https://www.syntevo.com/smartgit)
 - [Visual Studio Code](https://code.visualstudio.com)
 
