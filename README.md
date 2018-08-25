@@ -10,6 +10,7 @@ The following tools are available:
 - [Eclipse](https://www.eclipse.org) IDE for Java EE Developers (with workspace enhancements included)
 - [Git](https://git-scm.com) (able to setup SSH keys, auto clone repos, and update Paltry itself)
 - [Java](https://www.oracle.com/java/index.html) JDK 8 (with unlimited strength JCE)
+- [Lazygit](https://github.com/jesseduffield/lazygit)
 - [Apache Maven](https://maven.apache.org) (encrypted server passwords support included)
 - [Node.js](https://nodejs.org)
 - [npm](https://www.npmjs.com)
