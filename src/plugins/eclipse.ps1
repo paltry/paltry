@@ -4,8 +4,10 @@ param(
 
 if ($Online) {
   $EclipseDownloadUrl = Get-WebRequest "https://www.eclipse.org/downloads/eclipse-packages" |
-  ForEach-Object { $_.Links } | ForEach-Object { $_.href } | Where-Object { $_ -match "eclipse-jee-.+x86_64.zip$" } |
-  ForEach-Object { "$_&mirror_id=1" }
+  ForEach-Object { $_.Links } | ForEach-Object { $_.href } |
+  Where-Object { $_ -match "eclipse-jee-.+x86_64.zip$" } |
+  ForEach-Object { "$_&mirror_id=1" } |
+  ForEach-Object { $_ -replace "about://","https://" }
 }
 
 $EclipseWorkspace = "$CurrentFolder\eclipse-workspace"
