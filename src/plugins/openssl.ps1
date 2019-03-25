@@ -1,9 +1,11 @@
 $OpenSslDownloadSite = "https://bintray.com/vszakats/generic"
 if ($Online) {
-  $OpenSslFile = Get-WebRequest "$OpenSslDownloadSite/openssl/_latestVersion#files" |
-  ForEach-Object { $_.Links } | ForEach-Object { $_.innerText } |
-  Where-Object { $_ -match "^openssl-.*-win64-mingw.zip$" } |
-  Sort-Object Value -Descending | Select-Object -First 1
+  $RedirectRequest = [System.Net.WebRequest]::Create("$OpenSslDownloadSite/openssl/_latestVersion#files")
+  $RedirectRequest.AllowAutoRedirect = $false
+  $RedirectResponse = $RedirectRequest.GetResponse()
+  $RedirectUrl = $RedirectResponse.GetResponseHeader("Location")
+  $OpenSslVersion = $RedirectUrl.Split("/") | Select-Object -Last 1
+  $OpenSslFile = "openssl-$OpenSslVersion-win64-mingw.zip"
   $OpenSslFolder = [io.path]::GetFileNameWithoutExtension($OpenSslFile)
   $OpenSslUrl = "$OpenSslDownloadSite/download_file?file_path=$OpenSslFile"
   $OpenSslDownloadFile = "$DownloadsFolder\$OpenSslFile"

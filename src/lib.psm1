@@ -42,7 +42,6 @@ function Confirm-Online {
 }
 
 function Get-WebClient {
-  [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
   $WebClient = New-Object System.Net.WebClient
   $WebClient.Headers.Add("User-Agent","PowerShell")
   return $WebClient

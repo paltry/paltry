@@ -15,6 +15,7 @@ $DisabledPlugins = $Config.disabled
 $Global:PathExtensions = @()
 $Global:ToolsInstalled = @()
 $Global:EnvExtensions = @()
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
 Import-Module $SourceFolder\lib.psm1
 
