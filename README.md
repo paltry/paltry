@@ -14,6 +14,7 @@ The following tools are available:
 - [OpenSSL](https://www.openssl.org)
 - [SmartGit](https://www.syntevo.com/smartgit)
 - [Visual Studio Code](https://code.visualstudio.com)
+- [WizTree](https://antibody-software.com/web/software/software/wiztree-finds-the-files-and-folders-using-the-most-disk-space-on-your-hard-drive)
 
 ## Prerequisites
 
