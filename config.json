@@ -4,9 +4,12 @@
   "disabled": [
     "//atom",
     "//chromium",
+    "//eclipse",
     "//git",
+    "//java",
     "//launch",
     "//lazygit",
+    "//maven",
     "//node",
     "//npm",
     "//openssl",
@@ -16,6 +19,7 @@
   ],
   "versions": {
     "7zip": "1801",
+    "maven": "",
     "node": "",
     "npm": ""
   },
@@ -28,9 +32,19 @@
       "powershell -ExecutionPolicy Bypass -File %PALTRY_HOME%\\src\\format.ps1"
     ]
   },
+  "eclipse": {
+    "skipIntro": true,
+    "unlimitedConsoleOutput": true,
+    "gitIconDecorations": true,
+    "cleanInstallMavenLaunchConfig": true
+  },
   "git": {
     "ssh": true,
     "repos": {}
+  },
+  "maven": {
+    "cleanup": true,
+    "servers": []
   },
   "vscode": {
     "extensions": [

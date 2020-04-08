@@ -7,8 +7,11 @@ The following tools are available:
 - [7-Zip](https://www.7-zip.org)
 - [Atom](https://atom.io)
 - [Chromium](https://www.chromium.org)
+- [Eclipse](https://www.eclipse.org) IDE for Java EE Developers (with workspace enhancements included)
 - [Git](https://git-scm.com) (able to setup SSH keys, auto clone repos, and update Paltry itself)
+- [Java](https://www.oracle.com/java/index.html) JDK 8 (with unlimited strength JCE)
 - [Lazygit](https://github.com/jesseduffield/lazygit)
+- [Apache Maven](https://maven.apache.org) (encrypted server passwords support included)
 - [Node.js](https://nodejs.org)
 - [npm](https://www.npmjs.com)
 - [OpenSSL](https://www.openssl.org)
@@ -55,12 +58,20 @@ The only file users should modify is `config.json`. It is intended to encompass 
 - `cwd (string)` - The current working directory to use when launching the console.
 - `env ({string: string})` - Environment variables to set for the portable environment. Note that `Path` is special since it is appended to by Paltry and so should be extended with the `path` option below.
 - `disabled ([string])` - A blacklist of the plugins not to run. Note that nonexistant plugins are ignored. The default config takes advantage of this to list available plugins "commented out" by prefixing them with `//`. Removing the "comment" in this list will actually disable that plugin. If you don't ever intend to disable a plugin feel free to remove it from this list entirely.
-- `versions ({string: string})` - Most tools support installing the latest available version except for 7zip, which must have a version set. The `node` and `npm` tools support specifying an exact version here. An empty string value or omitting a key entirely defaults to the latest version.
+- `versions ({string: string})` - Most tools support installing the latest available version except for 7zip, which must have a version set. The `maven`, `node`, and `npm` tools support specifying an exact version here. An empty string value or omitting a key entirely defaults to the latest version.
 - `path ([string])` - An array of additional locations to add to your path. Usefully for adding other tools not supported by Paltry that you manually downloaded.
 - `scripts ({string: [string]})` - Custom scripts are defined with the name as the key (this becomes the filename/command used to call them) and an array of the lines in the script as the value. Note these will create batch files that are run with the command prompt.
+- `eclipse (object)`
+  - `skipIntro (boolean)` - Bypass displaying maximized welcome screen that blocks immediate use.
+  - `unlimitedConsoleOutput (boolean)` - Don't discard console output after a limited number of characters.
+  - `gitIconDecorations (boolean)` - Use icons to label Git modified resources instead of text.
+  - `cleanInstallMavenLaunchConfig (boolean)` - Add a launch configuration for Maven to perform a `clean install` build on the current project.
 - `git (object)`
   - `ssh (boolean)` - Enabling this will make sure you have SSH keys setup, generating them if needed. When keys are generated, the public key will be printed to the console. Please make sure to add this public key to any git remotes you intend to communicate with using SSH.
   - `repos ({string: string})` - Git repositories you want Paltry to clone automatically on your behalf. The local folder to use is the key with the remote URL as the value.
+- `maven (object)`
+  - `cleanup (boolean)` - Optionally cleanup remote repo data from your m2 repo. This will resolve some issues with not finding certain artifacts at the cost of a longer next build.
+  - `servers ([string])` - If you use private Maven repos (such as a Nexus server) then add their ids in an array to this property. The build will prompt for your credentials and will save encrypted versions of them to `settings.xml`. Different credentials per server are not supported at this time.
 - `vscode (object)`
   - `extensions ([string])` - Array of extensions to ensure are installed. Make sure to use the fully qualified `publisher.extension` name.
   - `settings (object)` - User settings for VS Code. Note that these will override any existing settings on a per-property basis. Apologies in advance for the ugly formatting on the JSON output.
