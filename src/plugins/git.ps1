@@ -14,7 +14,7 @@ $SshFolder = "$UserProfile\.ssh"
 $SshKeyPath = "$SshFolder\id_rsa"
 if ($Config.ssh -and !(Test-Path $SshKeyPath)) {
   Confirm-Folder $SshFolder
-  $GitInstallPath = $JdkInstalledFolder = FindTool PortableGit*
+  $GitInstallPath = FindTool PortableGit*
   & $GitInstallPath\usr\bin\ssh-keygen.exe -t rsa -C """""" -N """""" -f $SshKeyPath
   $PublicKey = Get-Content "$SshKeyPath.pub"
   Out-Warn "Make sure to allow your new public key for any remotes that require SSH: $PublicKey"
