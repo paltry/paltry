@@ -9,11 +9,7 @@ if ($Online) {
 }
 InstallTool -Name "Chromium" -Url $ChromiumDownloadUrl -Prefix chromium* -ToolFile $ChromiumDownloadFile
 $ChromiumInstallFolder = FindTool chromium*
-$ChromiumOriginalExecutable = "$ChromiumInstallFolder\chrome.exe"
-$ChromiumExecutable = "$ChromiumInstallFolder\chromium.exe"
-
-if ((Test-Path $ChromiumOriginalExecutable) -and !(Test-Path $ChromiumExecutable)) {
-  Move-Item -Force $ChromiumOriginalExecutable $ChromiumExecutable
-}
+AddToPath $ChromiumInstallFolder
+$ChromiumExecutable = "$ChromiumInstallFolder\chrome.exe"
 
 Add-Launch -Name "Chromium" -Target "$ChromiumExecutable"
