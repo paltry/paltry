@@ -15,6 +15,7 @@ The following tools are available:
 - [Node.js](https://nodejs.org)
 - [npm](https://www.npmjs.com)
 - [OpenSSL](https://www.openssl.org)
+- [Ruby](https://www.ruby-lang.org)
 - [SmartGit](https://www.syntevo.com/smartgit)
 - [Visual Studio Code](https://code.visualstudio.com)
 - [WizTree](https://antibody-software.com/web/software/software/wiztree-finds-the-files-and-folders-using-the-most-disk-space-on-your-hard-drive)
@@ -58,7 +59,7 @@ The only file users should modify is `config.json`. It is intended to encompass 
 - `cwd (string)` - The current working directory to use when launching the console.
 - `env ({string: string})` - Environment variables to set for the portable environment. Note that `Path` is special since it is appended to by Paltry and so should be extended with the `path` option below.
 - `disabled ([string])` - A blacklist of the plugins not to run. Note that nonexistant plugins are ignored. The default config takes advantage of this to list available plugins "commented out" by prefixing them with `//`. Removing the "comment" in this list will actually disable that plugin. If you don't ever intend to disable a plugin feel free to remove it from this list entirely.
-- `versions ({string: string})` - Most tools support installing the latest available version except for 7zip, which must have a version set. The `maven`, `node`, and `npm` tools support specifying an exact version here. An empty string value or omitting a key entirely defaults to the latest version.
+- `versions ({string: string})` - Most tools support installing the latest available version except for 7zip, which must have a version set. The `maven`, `node`, `npm`, and `ruby` tools support specifying an exact version here. An empty string value or omitting a key entirely defaults to the latest version.
 - `path ([string])` - An array of additional locations to add to your path. Usefully for adding other tools not supported by Paltry that you manually downloaded.
 - `scripts ({string: [string]})` - Custom scripts are defined with the name as the key (this becomes the filename/command used to call them) and an array of the lines in the script as the value. Note these will create batch files that are run with the command prompt.
 - `eclipse (object)`

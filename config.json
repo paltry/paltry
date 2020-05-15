@@ -13,6 +13,7 @@
     "//node",
     "//npm",
     "//openssl",
+    "//ruby",
     "//smartgit",
     "//vscode",
     "//wiztree"
@@ -21,7 +22,8 @@
     "7zip": "1801",
     "maven": "",
     "node": "",
-    "npm": ""
+    "npm": "",
+    "ruby": ""
   },
   "path": [],
   "scripts": {
