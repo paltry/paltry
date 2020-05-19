@@ -136,6 +136,10 @@ function InstallTool ($Name,$Url,$Prefix,$ToolFile) {
     Out-Info "Extracting $Name..."
     Remove-Item -Recurse -ErrorAction Ignore $ExtractedFolder
     7z x "$DownloadedFile" -o"$ExtractedFolder"
+    Get-ChildItem "$ExtractedFolder\*.tar" | ForEach-Object {
+      7z x $_.FullName -o"$ExtractedFolder"
+      Remove-Item -ErrorAction Ignore $_.FullName
+    }
     $ExtractedContents = Get-ChildItem $ExtractedFolder
     if ($ExtractedContents.Length -eq 1 -and $ExtractedContents[0].PSIsContainer) {
       Copy-Item $ExtractedContents[0].FullName -Destination $InstalledFolder -Recurse

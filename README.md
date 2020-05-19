@@ -12,6 +12,7 @@ The following tools are available:
 - [Java](https://www.oracle.com/java/index.html) JDK 8 (with unlimited strength JCE)
 - [Lazygit](https://github.com/jesseduffield/lazygit)
 - [Apache Maven](https://maven.apache.org) (encrypted server passwords support included)
+- [MSYS2](https://www.msys2.org) (enables installing Ruby gems with native extensions)
 - [Node.js](https://nodejs.org)
 - [npm](https://www.npmjs.com)
 - [OpenSSL](https://www.openssl.org)

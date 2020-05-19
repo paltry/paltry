@@ -10,6 +10,7 @@
     "//launch",
     "//lazygit",
     "//maven",
+    "//msys2",
     "//node",
     "//npm",
     "//openssl",
