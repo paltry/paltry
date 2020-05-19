@@ -14,5 +14,3 @@ if ($UseLatestVersion) {
 
 $RubyDownloadUrl = "https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-$RubyVersion/rubyinstaller-$RubyVersion-x64.7z"
 InstallTool -Name "Ruby" -Url $RubyDownloadUrl -Prefix rubyinstaller*
-$RubyInstalledFolder = FindTool rubyinstaller*
-FindBinAndAddToPath $RubyInstalledFolder
