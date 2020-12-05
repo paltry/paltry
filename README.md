@@ -9,7 +9,7 @@ The following tools are available:
 - [Chromium](https://www.chromium.org)
 - [Eclipse](https://www.eclipse.org) IDE for Java EE Developers (with workspace enhancements included)
 - [Git](https://git-scm.com) (able to setup SSH keys, auto clone repos, and update Paltry itself)
-- [Java](https://openjdk.java.net) OpenJDK 8
+- [Java](https://openjdk.java.net) OpenJDK 11
 - [Lazygit](https://github.com/jesseduffield/lazygit)
 - [Apache Maven](https://maven.apache.org) (encrypted server passwords support included)
 - [MSYS2](https://www.msys2.org) (enables installing Ruby gems with native extensions)
