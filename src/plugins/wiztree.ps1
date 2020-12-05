@@ -6,5 +6,5 @@ if ($Online) {
     ForEach-Object { $_.Value } } | Select-Object -First 1
   $WizTreeDownloadUrl = "$WizTreeDownloadPrefix/$WizTreeDownloadPath"
 }
-InstallTool -Name "WizTree" -Url $WizTreeDownloadUrl -Prefix wiztree*
+InstallTool -Name "WizTree" -Url $WizTreeDownloadUrl -Prefix wiztree* | Out-Null
 Add-Launch -Name "WizTree" -Target "$(FindTool wiztree*)\WizTree64.exe"

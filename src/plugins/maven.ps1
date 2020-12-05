@@ -10,7 +10,7 @@ if ($Online -and $UseLatestVersion) {
   Sort-Object -Descending | Select-Object -First 1
 }
 $MavenDownloadUrl = "https://archive.apache.org/dist/maven/maven-3/$Version/binaries/apache-maven-$Version-bin.zip"
-InstallTool -Name "Maven" -Url $MavenDownloadUrl -Prefix apache-maven*
+InstallTool -Name "Maven" -Url $MavenDownloadUrl -Prefix apache-maven* | Out-Null
 
 $MavenUserFolder = "$UserProfile\.m2"
 $MavenSettings = "$MavenUserFolder\settings.xml"

@@ -7,7 +7,7 @@ if ($Online) {
   Where-Object { $_.Name -eq "chrome.sync.7z" } |
   ForEach-Object { $_.browser_download_url }
 }
-InstallTool -Name "Chromium" -Url $ChromiumDownloadUrl -Prefix chromium* -ToolFile $ChromiumDownloadFile
+InstallTool -Name "Chromium" -Url $ChromiumDownloadUrl -Prefix chromium* -ToolFile $ChromiumDownloadFile | Out-Null
 $ChromiumInstallFolder = FindTool chromium*
 AddToPath $ChromiumInstallFolder
 $ChromiumExecutable = "$ChromiumInstallFolder\chrome.exe"

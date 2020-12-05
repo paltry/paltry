@@ -8,7 +8,7 @@ if ($Online) {
   Select-Object -Expand assets | Where-Object { $_.Name -match "PortableGit.+64-bit.+" }
   $PortableGitUrl = $PortableGitRelease.browser_download_url -split " " | Select-Object -First 1
 }
-InstallTool -Name "Git" -Url $PortableGitUrl -Prefix PortableGit*
+InstallTool -Name "Git" -Url $PortableGitUrl -Prefix PortableGit* | Out-Null
 
 $SshFolder = "$UserProfile\.ssh"
 $SshKeyPath = "$SshFolder\id_rsa"

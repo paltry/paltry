@@ -5,10 +5,10 @@ param(
 $VsCodeUrl = "https://vscode-update.azurewebsites.net/latest/win32-x64-archive/stable"
 $VsCodeDataFolder = "$CurrentFolder\vscode"
 
-InstallTool -Name "VS Code" -Url $VsCodeUrl -Prefix VSCode*
+$InstallWasNeeded = InstallTool -Name "VS Code" -Url $VsCodeUrl -Prefix VSCode*
 Add-Launch -Name "VS Code" -Target "$(FindTool VSCode*)\Code.exe" -Arguments "--user-data-dir ""$VsCodeDataFolder"" --extensions-dir ""$VsCodeDataFolder\extensions"""
 
-if ($Config.extensions -and $Config.extensions.Length) {
+if ($InstallWasNeeded -and $Config.extensions -and $Config.extensions.Length) {
   $Config.extensions | ForEach-Object {
     code --extensions-dir "$VsCodeDataFolder\extensions" --install-extension $_
   }

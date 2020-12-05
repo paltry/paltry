@@ -5,5 +5,5 @@ if ($Online) {
   ForEach-Object { "https://www.syntevo.com$_" } | Select-Object -First 1 |
   ForEach-Object { $_ -replace "about:/","/" }
 }
-InstallTool -Name "SmartGit" -Url $SmartGitDownloadUrl -Prefix smartgit*
+InstallTool -Name "SmartGit" -Url $SmartGitDownloadUrl -Prefix smartgit* | Out-Null
 Add-Launch -Name "SmartGit" -Target "$(FindTool smartgit*)\bin\smartgit.exe"

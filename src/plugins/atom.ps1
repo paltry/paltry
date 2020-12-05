@@ -4,5 +4,5 @@ if ($Online) {
   $AtomDownloadUrl = $AtomRelease.browser_download_url -split " " | Select-Object -First 1
 }
 
-InstallTool -Name "Atom" -Url $AtomDownloadUrl -Prefix atom*
+InstallTool -Name "Atom" -Url $AtomDownloadUrl -Prefix atom* | Out-Null
 Add-Launch -Name "Atom" -Target "$(FindTool atom*)\atom.exe"

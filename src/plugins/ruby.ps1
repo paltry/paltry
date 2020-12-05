@@ -13,5 +13,7 @@ if ($UseLatestVersion) {
 }
 
 $RubyDownloadUrl = "https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-$RubyVersion/rubyinstaller-$RubyVersion-x64.7z"
-InstallTool -Name "Ruby" -Url $RubyDownloadUrl -Prefix rubyinstaller*
-ridk install 3
+$InstallWasNeeded = InstallTool -Name "Ruby" -Url $RubyDownloadUrl -Prefix rubyinstaller*
+if ($InstallWasNeeded) {
+  ridk install 3
+}

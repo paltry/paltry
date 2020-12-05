@@ -4,4 +4,4 @@ if ($Online) {
   Sort-Object -Descending | Select-Object -First 1
   $MSYS2DownloadUrl = "$MSYS2RepoUrl/$MSYS2File"
 }
-InstallTool -Name "MSYS2" -Url $MSYS2DownloadUrl -Prefix msys2*
+InstallTool -Name "MSYS2" -Url $MSYS2DownloadUrl -Prefix msys2* | Out-Null

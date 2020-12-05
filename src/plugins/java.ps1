@@ -5,6 +5,6 @@ if ($Online) {
   $JavaDownloadUrl = $JavaRelease.browser_download_url -split " " | Select-Object -First 1
 }
 
-InstallTool -Name "JDK" -Url $JavaDownloadUrl -Prefix java*
+InstallTool -Name "JDK" -Url $JavaDownloadUrl -Prefix java* | Out-Null
 $JdkInstalledFolder = FindTool java*
 AddEnvExtension "JAVA_HOME" $JdkInstalledFolder

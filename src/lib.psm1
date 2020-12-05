@@ -127,7 +127,9 @@ function InstallTool ($Name,$Url,$Prefix,$ToolFile) {
       Confirm-Online
     }
   }
+  $InstallWasNeeded = $false
   if (!(Test-Path $InstalledFolder)) {
+    $InstallWasNeeded = $true
     if (!(Test-Path $DownloadedFile)) {
       Confirm-Online
       Out-Info "Downloading $Name..."
@@ -150,6 +152,7 @@ function InstallTool ($Name,$Url,$Prefix,$ToolFile) {
   }
 
   FindBinAndAddToPath $InstalledFolder
+  return $InstallWasNeeded
 }
 
 function Add-Launch ($Name,$Target,$Arguments) {

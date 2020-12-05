@@ -12,7 +12,7 @@ if ($Online) {
 
 $EclipseWorkspace = "$CurrentFolder\eclipse-workspace"
 
-InstallTool -Name "Eclipse" -Url $EclipseDownloadUrl -Prefix eclipse-java*
+InstallTool -Name "Eclipse" -Url $EclipseDownloadUrl -Prefix eclipse-java* | Out-Null
 Add-Launch -Name "Eclipse" -Target "$(FindTool eclipse-java*)\eclipse.exe" -Arguments "-data ""$EclipseWorkspace"""
 
 if ($Config.skipIntro) {
