@@ -3,7 +3,7 @@
   "env": {},
   "disabled": [
     "//atom",
-    "//chromium",
+    "//chrome",
     "//eclipse",
     "//git",
     "//java",
@@ -20,8 +20,7 @@
     "//wiztree"
   ],
   "versions": {
-    "7zip": "1801",
-    "maven": "",
+    "7zip": "1900",
     "node": "",
     "npm": "",
     "ruby": ""
