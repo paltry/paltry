@@ -2,6 +2,7 @@
   "cwd": "..",
   "env": {},
   "disabled": [
+    "//anaconda",
     "//atom",
     "//chrome",
     "//eclipse",
