@@ -3,7 +3,6 @@
   "env": {},
   "disabled": [
     "//anaconda",
-    "//atom",
     "//chrome",
     "//eclipse",
     "//git",

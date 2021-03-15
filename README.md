@@ -6,7 +6,6 @@ The following tools are available:
 
 - [7-Zip](https://www.7-zip.org)
 - [Anaconda](https://www.anaconda.com) for Python development (using the minimal Miniconda version)
-- [Atom](https://atom.io)
 - [Chromium](https://www.chromium.org)
 - [Eclipse](https://www.eclipse.org) IDE for Java EE Developers (with workspace enhancements included)
 - [Git](https://git-scm.com) (able to setup SSH keys, auto clone repos, and update Paltry itself)
