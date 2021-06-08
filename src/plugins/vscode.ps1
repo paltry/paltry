@@ -2,7 +2,7 @@ param(
   [object]$Config
 )
 
-$VsCodeUrl = "https://vscode-update.azurewebsites.net/latest/win32-x64-archive/stable"
+$VsCodeUrl = "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-archive"
 $VsCodeDataFolder = "$CurrentFolder\vscode"
 
 $InstallWasNeeded = InstallTool -Name "VS Code" -Url $VsCodeUrl -Prefix VSCode*
