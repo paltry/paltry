@@ -17,7 +17,7 @@ if ($InstallWasNeeded -and $Config.extensions -and $Config.extensions.Length) {
 if ($Config.settings) {
   Out-Info "Saving custom VS Code settings..."
   $VsCodeSettingsFile = "$VsCodeDataFolder\User\settings.json"
-  $ExistingVsCodeSettings = Get-Content -ErrorAction Ignore $VsCodeSettingsFile | Out-String | ConvertFrom-Json
+  $ExistingVsCodeSettings = Get-Content -ErrorAction Ignore $VsCodeSettingsFile -Raw | Out-String | ConvertFrom-Json
   $VsCodeSettings = New-Object PsObject
   if ($ExistingVsCodeSettings) {
     $ExistingVsCodeSettings.PSObject.Properties | ForEach-Object {
