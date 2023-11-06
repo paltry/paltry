@@ -12,7 +12,6 @@
     "//maven",
     "//msys2",
     "//node",
-    "//npm",
     "//openssl",
     "//ruby",
     "//smartgit",
@@ -21,6 +20,7 @@
   ],
   "versions": {
     "7zip": "1900",
+    "maven": "",
     "node": "",
     "npm": "",
     "ruby": ""
