@@ -191,7 +191,7 @@ function Out-Console {
 @echo off
 $(($Global:EnvExtensions | Out-String) -Join '\n')
 cd "$ConfigCwd"
-if "%*"=="" (start powershell) else (start %*)
+if "%*"=="" (start powershell -ExecutionPolicy Bypass) else (start %*)
 "@ | Out-FileForce "$LaunchFolder\console.cmd"
 }
 
